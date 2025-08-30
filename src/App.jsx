@@ -9,12 +9,15 @@ const articleList = [
 
 
 function App() {
-  const [article, setArticle] = useState(articleList);
+  const [articles, setArticle] = useState(articleList);
   const [newArticle, setNewArticle] = useState ("")
 
   const handleForm = (e) => {
     e.preventDefault()
-    alert("Articolo aggiunto")
+    const article = newArticle.trim()
+   const copyArticles = [...articles, article]
+
+   setArticle(copyArticles)
   }
 
 
@@ -24,7 +27,7 @@ function App() {
         <div className="col-12 "><h1 className="text-danger">Lista di Articoli</h1></div>
         <div className="col-12">
           <ul className="list-group">
-            {article.map((item, index)=>{
+            {articles.map((item, index)=>{
               return (
                 <li className="list-group-item" key={index}>
                   <div className="d-flex justify-content-between">
