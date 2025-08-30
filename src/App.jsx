@@ -12,6 +12,11 @@ function App() {
   const [article, setArticle] = useState(articleList);
   const [newArticle, setNewArticle] = useState ("")
 
+  const handleForm = (e) => {
+    e.preventDefault()
+    alert("Articolo aggiunto")
+  }
+
 
   return (
     <div className="container mt-5">
@@ -25,15 +30,23 @@ function App() {
                   <div className="d-flex justify-content-between">
                     <div>{item}</div>
 
-
                   </div>
-
-
 
                 </li>
               )
             })}
           </ul>
+
+          <form className="mt-5 d-flex justify-content-end" onSubmit={handleForm}>
+            <input className="p-3 " type="text"
+            value={newArticle}
+            onChange={(event)=>{
+              setNewArticle(event.target.value)
+            }}
+            />
+            <button className="ms-3">Inserisci nuovo articolo</button>
+          </form>
+
         </div>
       </div>
     </div>
